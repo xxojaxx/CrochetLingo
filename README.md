@@ -62,7 +62,7 @@ The CrochetLingo DSL is designed to represent crochet instructions in a structur
 **Input (EN):**
 
 ```
-rnd 1: magic ring 8 sc (8);
+rnd 1: mr 8 sc (8);
 rnd 2: 8 inc (16);
 rnd 3: (1 sc, 1 inc) x 8 (24);
 ```
@@ -70,7 +70,7 @@ rnd 3: (1 sc, 1 inc) x 8 (24);
 **Output (PL):**
 
 ```
-okr 1: magiczne kółko 8 ps (8);
+okr 1: mk 8 ps (8);
 okr 2: 8 zw (16);
 okr 3: (1 ps, 1 zw) x 8 (24);
 ```
