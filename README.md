@@ -19,21 +19,28 @@ The CrochetLingo DSL is designed to represent crochet instructions in a structur
 
 ### 🧵 Basic Operations (Stitches)
 
-| Full English Name   | EN Abbreviation | PL Abbreviation | Full Polish Name   |
-| ------------------- | --------------- | --------------- | ------------------ |
-| single crochet      | sc              | ps              | półsłupek          |
-| half double crochet | hdc             | psn             | półsłupek nawijany |
-| double crochet      | dc              | s               | słupek             |
-| chain               | ch              | ł               | łańcuszek          |
-| slip stitch         | sl st           | oś              | oczko ścisłe       |
+| Full English Name   | EN Abbreviation | PL Abbreviation | Full Polish Name          |
+| ------------------- | --------------- | --------------- | ------------------------- |
+| single crochet      | sc              | ps              | półsłupek                 |
+| half double crochet | hdc             | psn             | półsłupek nawijany        |
+| double crochet      | dc              | s               | słupek                    |
+| chain               | ch              | ł               | łańcuszek                 |
+| slip stitch         | sl st           | oś              | oczko ścisłe              |
+| fasten off          | fo              | zr              | zakończ robótkę           |
+| magic ring          | mr              | mk              | magiczne kółko            |
+| increase            | inc             | zw              | zwiększenie ilości oczek  |
+| decrease            | dec             | zm              | zmniejszenie ilości oczek |
+| front loop only     | flo             | po              | tylko przednie oczka      |
+| back loop only      | blo             | to              | tylko tylne oczka         |
 
 ---
 
 ### 🔁 Control Structures
 
-| Full English Description | Short Form (EN/PL) | Full Polish Description |
-| ------------------------ | ------------------ | ----------------------- |
-| repeat N times: ...      | (... ) x N         | powtórz N razy          |
+| Full English Name        | EN Abbreviation    | PL Abbreviation         | Full Polish Name          |
+| ------------------------ | ------------------ | ----------------------- | ------------------------- |
+| repeat N times: ...      | (... ) x N         | (... ) x N              | powtórz N razy            |
+| round X                  | rnd X              | okr X                   | okrąg X                   |
 
 ---
 
@@ -41,10 +48,32 @@ The CrochetLingo DSL is designed to represent crochet instructions in a structur
 
 | Full English Name | EN Short   | PL Short        | Full Polish Name |
 | ----------------- | ---------- | --------------- | ---------------- |
-| in next stitch    | in next st | do nast. oczka  | w następne oczko |
-| in same stitch    | in same st | w to samo oczko | w to samo oczko  |
+| in next stitch    | in next st | do nast. ocz    | w następne oczko |
+| in same stitch    | in same st | w to samo ocz   | w to samo oczko  |
 | skip N stitches   | skip N st  | omiń N oczek    | omiń N oczek     |
 | turn              | turn       | obróć           | obróć robótkę    |
+
+---
+
+---
+
+## 🔄 Example Translation
+
+**Input (EN):**
+
+```
+rnd 1: magic ring 8 sc (8);
+rnd 2: 8 inc (16);
+rnd 3: (1 sc, 1 inc) x 8 (24);
+```
+
+**Output (PL):**
+
+```
+okr 1: magiczne kółko 8 ps (8);
+okr 2: 8 zw (16);
+okr 3: (1 ps, 1 zw) x 8 (24);
+```
 
 ---
 
