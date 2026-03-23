@@ -48,7 +48,7 @@ The CrochetLingo DSL is designed to represent crochet instructions in a structur
 
 | Full English Name | EN Short   | PL Short        | Full Polish Name |
 | ----------------- | ---------- | --------------- | ---------------- |
-| in next stitch    | in next st | do nast. ocz    | w następne oczko |
+| in next stitch    | in next st | w nast. ocz    | w następne oczko |
 | in same stitch    | in same st | w to samo ocz   | w to samo oczko  |
 | skip N stitches   | skip N st  | omiń N oczek    | omiń N oczek     |
 | turn              | turn       | obróć           | obróć robótkę    |
