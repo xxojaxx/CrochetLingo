@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/CrochetLingo.iml" filepath="$PROJECT_DIR$/CrochetLingo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/grammar/CrochetLingo.iml" filepath="$PROJECT_DIR$/grammar/CrochetLingo.iml" />
     </modules>
   </component>
 </project>
