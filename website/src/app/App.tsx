@@ -72,7 +72,7 @@ export default function App() {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          pattern_en: { text: inputText }
+          pattern_en: { text: inputText.toLowerCase() }
         })
       });
 

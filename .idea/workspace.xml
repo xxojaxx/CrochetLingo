@@ -4,15 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e4b1950-aa76-44f7-b6fe-05392743675a" name="Changes" comment="ANTLR library added">
-      <change afterPath="$PROJECT_DIR$/website/.idea/website.iml" afterDir="false" />
+    <list default="true" id="3e4b1950-aa76-44f7-b6fe-05392743675a" name="Changes" comment="new exceptions and features on frontend">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/crochetLingo/antlr/CrochetToPolishVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/crochetLingo/antlr/CrochetToPolishVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/crochetLingo/antlr/DslSyntaxException.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/crochetLingo/antlr/DslSyntaxException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/crochetLingo/antlr/ThrowingErrorListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/crochetLingo/antlr/ThrowingErrorListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/crochetLingo/controller/TranslateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/crochetLingo/controller/TranslateController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/app/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/app/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/styles/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/styles/index.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +27,9 @@
     &quot;accountId&quot;: &quot;7d46099d-42b6-4aac-9d32-b2333e1314ba&quot;
   }
 }</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
@@ -103,7 +99,15 @@
       <option name="project" value="LOCAL" />
       <updated>1774092796279</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="new exceptions and features on frontend">
+      <option name="closed" value="true" />
+      <created>1774801173610</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1774801173610</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -122,7 +126,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="ANTLR library added" />
-    <option name="LAST_COMMIT_MESSAGE" value="ANTLR library added" />
+    <MESSAGE value="new exceptions and features on frontend" />
+    <option name="LAST_COMMIT_MESSAGE" value="new exceptions and features on frontend" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

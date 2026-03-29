@@ -50,11 +50,17 @@ public class CrochetToPolishVisitor extends CrochetBaseVisitor<String> {
             throw new DslSyntaxException("Unsupported stitch token: " + ctx.STITCH().getText());
         }
 
-        if (ctx.NUMBER() == null) {
-            return translated;
+        StringBuilder result = new StringBuilder(translated);
+
+        if (ctx.NUMBER() != null) {
+            result.append(" ").append(ctx.NUMBER().getText());
         }
 
-        return translated + " " + ctx.NUMBER().getText();
+        if (ctx.contextOperation() != null) {
+            result.append(" ").append(visit(ctx.contextOperation()));
+        }
+
+        return result.toString();
     }
 
     @Override

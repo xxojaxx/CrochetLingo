@@ -24,7 +24,7 @@ element
 
 // definicja sciegu z opcjonalnie ustawiona liczba
 stitch
-    : STITCH NUMBER?
+    : STITCH NUMBER? contextOperation?
     ;
 
 // definicja akcji
