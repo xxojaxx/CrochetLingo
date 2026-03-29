@@ -10,38 +10,60 @@ export default function App() {
   const [inputText, setInputText] = useState('');
   const [patternData, setPatternData] = useState<PatternData | null>(null);
   const [copied, setCopied] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  // English to Polish abbreviation mapping
-  const crochetAbbreviations: { [key: string]: string } = {
-    'ps': 'półsłupek',
-    'psn': 'półsłupek nawijany', 
-    's': 'słupek',    
-    'ł': 'łańcuszek',     
-    'oś': 'oczko ścisłe',     
-    'zr': 'zakończ robótkę',   
-    'mk': 'magiczne kółko',   
-    'zw': 'zwiększenie ilości oczek',
-    'zm': 'zmniejszenie ilości oczek',       
-    'po': 'tylko przednie oczka',       
-    'to': 'tylko tylnie oczka',     
-    'okr': 'okrąg',        
-    'ocz': 'oczko',          
-    'nast': 'następne',
-  };
+  const crochetMappings = [
+    { en: 'rnd', pl: 'okr' },
+    { en: 'sc', pl: 'ps' },
+    { en: 'hdc', pl: 'psn' },
+    { en: 'dc', pl: 's' },
+    { en: 'ch', pl: 'ł' },
+    { en: 'slst', pl: 'oś' },
+    { en: 'inc', pl: 'zw' },
+    { en: 'dec', pl: 'zm' },
+    { en: 'flo', pl: 'po' },
+    { en: 'blo', pl: 'to' },
+    { en: 'mr', pl: 'mk' },
+    { en: 'fo', pl: 'zr' },
+    { en: 'in_next_st', pl: 'w nast. ocz' },
+    { en: 'in_same_st', pl: 'w to samo ocz' },
+    { en: 'skip N', pl: 'omiń N oczek' },
+    { en: 'turn', pl: 'obróć' },
+  ];
 
   const translatePattern = async () => {
-    const response = await fetch('http://localhost:8080/api/translate', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        pattern_en: { text: inputText }
-      })
-    });
+    setErrorMessage(null);
 
-    const data = await response.json();
-    setPatternData(data);
+    try {
+      const response = await fetch('http://localhost:8080/api/translate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          pattern_en: { text: inputText }
+        })
+      });
+
+      if (!response.ok) {
+        const fallbackMessage = 'Nie udało się przetłumaczyć wzoru. Sprawdź, czy wejście jest zgodne z DSL v1.';
+        try {
+          const errorBody = await response.json();
+          setErrorMessage(errorBody.message ?? fallbackMessage);
+        } catch {
+          setErrorMessage(fallbackMessage);
+        }
+        setPatternData(null);
+        return;
+      }
+
+      const data = await response.json();
+      setPatternData(data);
+    } catch (error) {
+      console.error('Failed to translate:', error);
+      setPatternData(null);
+      setErrorMessage('Backend jest niedostępny. Upewnij się, że Spring Boot działa na porcie 8080.');
+    }
   };
 
   const copyToClipboard = async () => {
@@ -109,7 +131,7 @@ export default function App() {
                 <textarea
                   value={inputText}
                   onChange={(e) => setInputText(e.target.value)}
-                  placeholder="Przykład:&#10;rnd 1: mr 8 sc (8);&#10;rnd 2: 8 inc (16);&#10;rnd 3: (1 sc, 1 inc) x 8 (24);"
+                  placeholder="Przykład DSL v1:&#10;rnd 1: mr, sc 8;&#10;rnd 2: inc 8;&#10;rnd 3: (sc 1, inc) x 8;"
                   className="w-full h-64 p-4 border-2 border-rose-200 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-rose-400 focus:border-transparent bg-white"
                 />
               </div>
@@ -160,17 +182,23 @@ export default function App() {
                 )}
               </div>
             </div>
+
+            {errorMessage && (
+              <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+                {errorMessage}
+              </div>
+            )}
           </div>
         </div>
 
         <div className="mt-8 bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-rose-200">
-          <h2 className="text-rose-900 mb-3">Tabela tłumaczeń</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 text-sm text-rose-800">
-            {Object.entries(crochetAbbreviations).slice(0, 12).map(([enAbbr, plAbbr]) => (
-              <div key={enAbbr} className="flex gap-2 items-center">
-                <span className="font-semibold text-rose-900">{enAbbr}</span>
+          <h2 className="text-rose-900 mb-3">Mapowanie tokenów EN → PL DSL</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-rose-800">
+            {crochetMappings.map(({ en, pl }) => (
+              <div key={en} className="flex gap-2 items-center rounded-lg bg-rose-50 px-3 py-2">
+                <span className="font-mono font-semibold text-rose-900">{en}</span>
                 <span className="text-rose-400">→</span>
-                <span className="font-semibold text-rose-700">{plAbbr}</span>
+                <span className="font-mono font-semibold text-rose-700">{pl}</span>
               </div>
             ))}
           </div>

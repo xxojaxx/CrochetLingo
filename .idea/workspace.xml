@@ -5,18 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e4b1950-aa76-44f7-b6fe-05392743675a" name="Changes" comment="ANTLR library added">
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/crochetLingo/config/CorsConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/crochetLingo/controller/TranslateController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/crochetLingo/model/PatternRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/crochetLingo/model/PatternResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/crochetLingo/model/PatternText.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/crochetLingo/service/TranslatorService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/grammar/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/grammar/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/grammar/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/grammar/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CrochetLingo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/grammar/CrochetLingo.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/grammar/Crochet.g4" beforeDir="false" afterPath="$PROJECT_DIR$/grammar/src/grammar/Crochet.g4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/gen/Crochet.interp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/gen/Crochet.tokens" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/gen/CrochetBaseListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/gen/CrochetBaseVisitor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/gen/CrochetLexer.interp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/gen/CrochetLexer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/gen/CrochetLexer.tokens" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/gen/CrochetListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/gen/CrochetParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/gen/CrochetVisitor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/antlr4/com/example/crochetLingo/antlr/Crochet.g4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/crochetLingo/antlr/CrochetToPolishVisitor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/crochetLingo/antlr/DslSyntaxException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/crochetLingo/antlr/ThrowingErrorListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/test/java/com/example/crochetLingo/service/TranslatorServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/test/resources/fixtures/basic.en.dsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/test/resources/fixtures/basic.pl.dsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/test/resources/fixtures/context.en.dsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/test/resources/fixtures/context.pl.dsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/crochetLingo/controller/TranslateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/crochetLingo/controller/TranslateController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/crochetLingo/service/TranslatorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/crochetLingo/service/TranslatorService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/src/app/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/app/App.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +70,8 @@
     "Repository.Attach.Sources": "false",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "mapping",
+    "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -79,11 +95,12 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.25410.129" />
-        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-IU-251.25410.129" />
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.15989.150" />
+        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-IU-241.15989.150" />
       </set>
     </attachedChunks>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="3e4b1950-aa76-44f7-b6fe-05392743675a" name="Changes" comment="" />
@@ -93,6 +110,7 @@
       <updated>1774092502216</updated>
       <workItem from="1774092503393" duration="1619000" />
       <workItem from="1774428298576" duration="2370000" />
+      <workItem from="1774788436495" duration="1000000" />
     </task>
     <task id="LOCAL-00001" summary="ANTLR library added">
       <option name="closed" value="true" />
