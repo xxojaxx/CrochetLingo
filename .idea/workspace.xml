@@ -5,33 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e4b1950-aa76-44f7-b6fe-05392743675a" name="Changes" comment="ANTLR library added">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/gen/Crochet.interp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/gen/Crochet.tokens" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/gen/CrochetBaseListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/gen/CrochetBaseVisitor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/gen/CrochetLexer.interp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/gen/CrochetLexer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/gen/CrochetLexer.tokens" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/gen/CrochetListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/gen/CrochetParser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/gen/CrochetVisitor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/antlr4/com/example/crochetLingo/antlr/Crochet.g4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/crochetLingo/antlr/CrochetToPolishVisitor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/crochetLingo/antlr/DslSyntaxException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/crochetLingo/antlr/ThrowingErrorListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/test/java/com/example/crochetLingo/service/TranslatorServiceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/test/resources/fixtures/basic.en.dsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/test/resources/fixtures/basic.pl.dsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/test/resources/fixtures/context.en.dsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/test/resources/fixtures/context.pl.dsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/.idea/website.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/crochetLingo/antlr/CrochetToPolishVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/crochetLingo/antlr/CrochetToPolishVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/crochetLingo/antlr/DslSyntaxException.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/crochetLingo/antlr/DslSyntaxException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/crochetLingo/antlr/ThrowingErrorListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/crochetLingo/antlr/ThrowingErrorListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/crochetLingo/controller/TranslateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/crochetLingo/controller/TranslateController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/crochetLingo/service/TranslatorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/crochetLingo/service/TranslatorService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/src/app/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/app/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/src/styles/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/styles/index.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +51,8 @@
     "Repository.Attach.Sources": "false",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "mapping",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -80,6 +62,7 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "terminal",
     "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2025.1.1.1\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   }
@@ -126,8 +109,30 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="ANTLR library added" />
     <option name="LAST_COMMIT_MESSAGE" value="ANTLR library added" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/backend/src/main/java/com/example/crochetLingo/antlr/DslSyntaxException.java</url>
+          <line>27</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

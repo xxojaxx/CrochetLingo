@@ -25,17 +25,12 @@ public class TranslateController {
     }
 
     @PostMapping
-    public PatternResponse translate(@RequestBody(required = false) PatternRequest request) {
+    public PatternResponse translate(@RequestBody PatternRequest request) {
         if (request == null || request.pattern_en == null || request.pattern_en.text == null || request.pattern_en.text.isBlank()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "pattern_en.text is required");
         }
 
-        final String translated;
-        try {
-            translated = translatorService.translate(request.pattern_en.text);
-        } catch (DslSyntaxException | IllegalArgumentException exception) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, exception.getMessage(), exception);
-        }
+        String translated = translatorService.translate(request.pattern_en.text);
 
         PatternResponse response = new PatternResponse();
         response.pattern_en = request.pattern_en;

@@ -12,24 +12,55 @@ export default function App() {
   const [copied, setCopied] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  const crochetMappings = [
-    { en: 'rnd', pl: 'okr' },
-    { en: 'sc', pl: 'ps' },
-    { en: 'hdc', pl: 'psn' },
-    { en: 'dc', pl: 's' },
-    { en: 'ch', pl: 'ł' },
-    { en: 'slst', pl: 'oś' },
-    { en: 'inc', pl: 'zw' },
-    { en: 'dec', pl: 'zm' },
-    { en: 'flo', pl: 'po' },
-    { en: 'blo', pl: 'to' },
-    { en: 'mr', pl: 'mk' },
-    { en: 'fo', pl: 'zr' },
-    { en: 'in_next_st', pl: 'w nast. ocz' },
-    { en: 'in_same_st', pl: 'w to samo ocz' },
-    { en: 'skip N', pl: 'omiń N oczek' },
-    { en: 'turn', pl: 'obróć' },
+  const abbreviations = [
+    { en: 'rnd',        pl: 'okr',           full: 'okrąg' },
+    { en: 'sc',         pl: 'ps',            full: 'półsłupek' },
+    { en: 'hdc',        pl: 'psn',           full: 'półsłupek nawijany' },
+    { en: 'dc',         pl: 's',             full: 'słupek' },
+    { en: 'ch',         pl: 'ł',             full: 'łańcuszek' },
+    { en: 'slst',       pl: 'oś',            full: 'oczko ścisłe' },
+    { en: 'inc',        pl: 'zw',            full: 'zwiększenie ilości oczek' },
+    { en: 'dec',        pl: 'zm',            full: 'zmniejszenie ilości oczek' },
+    { en: 'flo',        pl: 'po',            full: 'tylko przednie oczka' },
+    { en: 'blo',        pl: 'to',            full: 'tylko tylne oczka' },
+    { en: 'mr',         pl: 'mk',            full: 'magiczne kółko' },
+    { en: 'fo',         pl: 'zr',            full: 'zakończ robótkę' },
+    { en: 'in_next_st', pl: 'w nast. ocz',   full: 'w następne oczko' },
+    { en: 'in_same_st', pl: 'w to samo ocz', full: 'w to samo oczko' },
+    { en: 'skip N',     pl: 'omiń N oczek',  full: 'opuść N oczek' },
+    { en: 'turn',       pl: 'obróć',         full: 'obróć pracę' },
   ];
+
+// słownik do tooltipów (klucz: skrót pl → pełna nazwa)
+  const crochetAbbreviations = Object.fromEntries(
+      abbreviations.map(({ pl, full }) => [pl, full])
+  );
+
+  function mapDslError(error: any): string {
+    const { line, column, offendingToken, expected } = error;
+
+    // brak średnika
+    if (expected?.includes("';'")) {
+      return `Linia ${line}: Brakuje średnika ";" na końcu rundy.`;
+    }
+
+    //  brak przecinka
+    if (expected?.includes("','")) {
+      return `Linia ${line}: Brakuje przecinka między elementami (np. "mr, sc 8").`;
+    }
+
+    //  liczba w złym miejscu
+    if (/^\d+$/.test(offendingToken)) {
+      return ` Linia ${line}: Liczba w złym miejscu. Użyj np. "sc 8", nie "8 sc".`;
+    }
+
+    //  nieznany token
+    if (offendingToken && !expected?.length) {
+      return ` Linia ${line}: Nieznany element "${offendingToken}".`;
+    }
+
+    return `Nieznany błąd. Sprawdź, czy wzór wpisany zgodnie ze schematem.`;
+  }
 
   const translatePattern = async () => {
     setErrorMessage(null);
@@ -49,7 +80,7 @@ export default function App() {
         const fallbackMessage = 'Nie udało się przetłumaczyć wzoru. Sprawdź, czy wejście jest zgodne z DSL v1.';
         try {
           const errorBody = await response.json();
-          setErrorMessage(errorBody.message ?? fallbackMessage);
+          setErrorMessage(mapDslError(errorBody));
         } catch {
           setErrorMessage(fallbackMessage);
         }
@@ -106,6 +137,57 @@ export default function App() {
     }
   };
 
+  function renderWithTooltips(text: string) {
+    const multiWordKeys = Object.keys(crochetAbbreviations)
+        .filter(k => k.includes(' '))
+        .sort((a, b) => b.length - a.length); // dłuższe najpierw
+
+    const parts: React.ReactNode[] = [];
+    let remaining = text;
+
+    while (remaining.length > 0) {
+      // Sprawdź czy zaczyna się wielowyrazowy skrót
+      const multiMatch = multiWordKeys.find(key =>
+          remaining.toLowerCase().startsWith(key.toLowerCase())
+      );
+
+      if (multiMatch) {
+        const translation = crochetAbbreviations[multiMatch];
+        parts.push(
+            <span key={parts.length} className="tooltip-wrapper underline decoration-dotted cursor-help">
+          {remaining.slice(0, multiMatch.length)}
+              <span className="tooltip-box">{translation}</span>
+        </span>
+        );
+        remaining = remaining.slice(multiMatch.length);
+        continue;
+      }
+
+      // Znajdź najbliższy token (słowo lub białe znaki)
+      const tokenMatch = remaining.match(/^(\s+|\S+)/);
+      if (!tokenMatch) break;
+
+      const token = tokenMatch[0];
+      const clean = token.toLowerCase().replace(/[(),;:.]/g, '').trim();
+      const translation = crochetAbbreviations[clean];
+
+      if (translation) {
+        parts.push(
+            <span key={parts.length} className="tooltip-wrapper underline decoration-dotted cursor-help">
+          {token}
+              <span className="tooltip-box">{translation}</span>
+        </span>
+        );
+      } else {
+        parts.push(token);
+      }
+
+      remaining = remaining.slice(token.length);
+    }
+
+    return parts;
+  }
+
   return (
     <div
       className="min-h-screen bg-rose-50 relative overflow-auto"
@@ -141,7 +223,7 @@ export default function App() {
                 <label className="block text-rose-900 font-semibold">Wzór po polsku</label>
                 {patternData ? (
                   <div className="p-4 border-2 border-rose-200 rounded-lg bg-rose-50 whitespace-pre-wrap h-64 overflow-y-auto">
-                    {patternData.pattern_pl.text}
+                    {renderWithTooltips(patternData.pattern_pl.text)}
                   </div>
                 ) : (
                   <div className="p-4 border-2 border-rose-200 rounded-lg bg-gray-50 h-64 flex items-center justify-center text-gray-400">
@@ -190,18 +272,30 @@ export default function App() {
             )}
           </div>
         </div>
-
-        <div className="mt-8 bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-rose-200">
-          <h2 className="text-rose-900 mb-3">Mapowanie tokenów EN → PL DSL</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-rose-800">
-            {crochetMappings.map(({ en, pl }) => (
-              <div key={en} className="flex gap-2 items-center rounded-lg bg-rose-50 px-3 py-2">
-                <span className="font-mono font-semibold text-rose-900">{en}</span>
-                <span className="text-rose-400">→</span>
-                <span className="font-mono font-semibold text-rose-700">{pl}</span>
-              </div>
+        <div className="mt-8 bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-rose-200 overflow-x-auto">
+          <h2 className="text-rose-900 mb-3">Słownik skrótów:</h2>
+          <table className="w-full text-sm">
+            <thead>
+            <tr className="text-left text-rose-500 border-b border-rose-100">
+              <th className="pb-2 font-medium">Angielski</th>
+              <th className="pb-2 font-medium">Polski skrót</th>
+              <th className="pb-2 font-medium">Pełna nazwa</th>
+            </tr>
+            </thead>
+            <tbody>
+            {abbreviations.map(({ en, pl, full }) => (
+                <tr key={en} className="border-b border-rose-50 hover:bg-rose-50/50">
+                  <td className="py-2 pr-4">
+                    <span className="font-mono bg-blue-50 text-blue-800 px-2 py-0.5 rounded text-xs">{en}</span>
+                  </td>
+                  <td className="py-2 pr-4">
+                    <span className="font-mono bg-rose-50 text-rose-800 px-2 py-0.5 rounded text-xs">{pl}</span>
+                  </td>
+                  <td className="py-2 text-rose-700">{full}</td>
+                </tr>
             ))}
-          </div>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 public class CrochetToPolishVisitor extends CrochetBaseVisitor<String> {
 
+
     private static final Map<String, String> STITCH_TRANSLATIONS = Map.of(
             "sc", "ps",
             "hdc", "psn",
