@@ -30,7 +30,7 @@ public class TranslateController {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "pattern_en.text is required");
         }
 
-        String translated = translatorService.translate(request.pattern_en.text);
+        String translated = translatorService.translate(request.pattern_en.text, request.isMirror());
 
         PatternResponse response = new PatternResponse();
         response.pattern_en = request.pattern_en;

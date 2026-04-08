@@ -5,9 +5,21 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class CrochetToPolishVisitor extends CrochetBaseVisitor<String> {
 
+    private final boolean mirror;
+
+    public CrochetToPolishVisitor(boolean mirror) {
+        this.mirror = mirror;
+    }
+
+    // konstruktor domyślny dla wstecznej kompatybilności
+    public CrochetToPolishVisitor() {
+        this.mirror = false;
+    }
 
     private static final Map<String, String> STITCH_TRANSLATIONS = Map.of(
             "sc", "ps",
@@ -44,7 +56,27 @@ public class CrochetToPolishVisitor extends CrochetBaseVisitor<String> {
 
     @Override
     public String visitElementList(CrochetParser.ElementListContext ctx) {
-        return ctx.element().stream()
+        List<CrochetParser.ElementContext> elements = new ArrayList<>(ctx.element());
+
+        if (mirror) {
+            // wyodrębnij mr z początku listy jeśli istnieje
+            int startIndex = 0;
+            if (!elements.isEmpty()) {
+                String firstText = elements.get(0).getText();
+                if ("mr".equals(firstText)) {
+                    startIndex = 1;
+                }
+            }
+
+            List<CrochetParser.ElementContext> prefix = elements.subList(0, startIndex);
+            List<CrochetParser.ElementContext> rest = new ArrayList<>(elements.subList(startIndex, elements.size()));
+            Collections.reverse(rest);
+
+            elements = new ArrayList<>(prefix);
+            elements.addAll(rest);
+        }
+
+        return elements.stream()
                 .map(this::visit)
                 .collect(Collectors.joining(", "));
     }
@@ -71,10 +103,8 @@ public class CrochetToPolishVisitor extends CrochetBaseVisitor<String> {
             String number = numberNode.getText();
 
             if (ctx.getChild(0).getText().equals(number)) {
-                // NUMBER STITCH
                 result.append(number).append(" ").append(translated);
             } else {
-                // STITCH NUMBER
                 result.append(translated).append(" ").append(number);
             }
         } else {

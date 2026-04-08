@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class TranslatorService {
 
-    public String translate(String input) {
+    public String translate(String input, boolean mirror) {
         if (input == null || input.isBlank()) {
             throw new IllegalArgumentException("pattern_en.text must not be blank");
         }
@@ -25,7 +25,7 @@ public class TranslatorService {
         parser.removeErrorListeners();
         parser.addErrorListener(ThrowingErrorListener.INSTANCE);
 
-        CrochetToPolishVisitor visitor = new CrochetToPolishVisitor();
+        CrochetToPolishVisitor visitor = new CrochetToPolishVisitor(mirror);
         return visitor.visit(parser.pattern());
     }
 }

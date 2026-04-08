@@ -25,7 +25,7 @@ class TranslatorServiceTest {
         String input = readFixture("fixtures/basic.en.dsl");
         String expected = readFixture("fixtures/basic.pl.dsl");
 
-        String actual = translatorService.translate(input);
+        String actual = translatorService.translate(input, false);
 
         assertEquals(normalize(expected), normalize(actual));
     }
@@ -35,14 +35,14 @@ class TranslatorServiceTest {
         String input = readFixture("fixtures/context.en.dsl");
         String expected = readFixture("fixtures/context.pl.dsl");
 
-        String actual = translatorService.translate(input);
+        String actual = translatorService.translate(input, false);
 
         assertEquals(normalize(expected), normalize(actual));
     }
 
     @Test
     void throwsForInvalidDsl() {
-        assertThrows(DslSyntaxException.class, () -> translatorService.translate("rnd 1: mr 8 sc;"));
+        assertThrows(DslSyntaxException.class, () -> translatorService.translate("rnd 1: mr 8 sc;", false));
     }
 
     private String readFixture(String path) throws IOException {
