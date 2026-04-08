@@ -6,6 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="3e4b1950-aa76-44f7-b6fe-05392743675a" name="Changes" comment="new exceptions and features on frontend">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/public/images/stitches/ch.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/website/public/images/stitches/ch.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/public/images/stitches/dc.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/website/public/images/stitches/dc.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/public/images/stitches/hdc.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/website/public/images/stitches/hdc.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/public/images/stitches/sc.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/website/public/images/stitches/sc.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/public/images/stitches/slst.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/website/public/images/stitches/slst.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/src/app/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/app/App.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,8 +54,9 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "#2 on feature/zmiany-30-03",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/jk123/Desktop/pliki_studia/CrochetLingo",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -74,8 +81,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.15989.150" />
-        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-IU-241.15989.150" />
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.25410.129" />
+        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-IU-251.25410.129" />
       </set>
     </attachedChunks>
   </component>
@@ -90,6 +97,8 @@
       <workItem from="1774092503393" duration="1619000" />
       <workItem from="1774428298576" duration="2370000" />
       <workItem from="1774788436495" duration="1000000" />
+      <workItem from="1774801697598" duration="1649000" />
+      <workItem from="1775633832147" duration="2083000" />
     </task>
     <task id="LOCAL-00001" summary="ANTLR library added">
       <option name="closed" value="true" />

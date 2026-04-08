@@ -6,7 +6,7 @@ pattern : round+;
 
 // runda z numerem + wszystkie instrukcje w danej rundzie
 round
-    : 'rnd' NUMBER ':' elementList ';'
+    : 'rnd' NUMBER ('-' NUMBER)?':' elementList ';'
     ;
 
 // lista elementow w konkretnej rundzie
@@ -24,7 +24,9 @@ element
 
 // definicja sciegu z opcjonalnie ustawiona liczba
 stitch
-    : STITCH NUMBER? contextOperation?
+    : NUMBER STITCH contextOperation?     // np. 2 sc
+    | STITCH NUMBER contextOperation?     // np. sc 2
+    | STITCH contextOperation?            // np. sc
     ;
 
 // definicja akcji

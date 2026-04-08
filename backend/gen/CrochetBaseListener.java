@@ -1,4 +1,4 @@
-// Generated from C:/Users/kszys/Desktop/PWr/INFORMATYKA TECHNICZNA/MIASI/CrochetLingo/backend/src/main/antlr4/com/example/crochetLingo/antlr/Crochet.g4 by ANTLR 4.13.2
+// Generated from C:/Users/jk123/Desktop/pliki_studia/CrochetLingo/backend/src/main/antlr4/com/example/crochetLingo/antlr/Crochet.g4 by ANTLR 4.13.2
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;

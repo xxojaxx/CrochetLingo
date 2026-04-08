@@ -1,5 +1,7 @@
 package com.example.crochetLingo.antlr;
 
+import org.antlr.v4.runtime.tree.TerminalNode;
+
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -28,7 +30,16 @@ public class CrochetToPolishVisitor extends CrochetBaseVisitor<String> {
 
     @Override
     public String visitRound(CrochetParser.RoundContext ctx) {
-        return "okr " + ctx.NUMBER().getText() + ": " + visit(ctx.elementList()) + ";";
+        List<TerminalNode> numbers = ctx.NUMBER();
+
+        String range;
+        if (numbers.size() == 2) {
+            range = numbers.get(0).getText() + "-" + numbers.get(1).getText();
+        } else {
+            range = numbers.get(0).getText();
+        }
+
+        return "okr " + range + ": " + visit(ctx.elementList()) + ";";
     }
 
     @Override
@@ -45,15 +56,29 @@ public class CrochetToPolishVisitor extends CrochetBaseVisitor<String> {
 
     @Override
     public String visitStitch(CrochetParser.StitchContext ctx) {
-        String translated = STITCH_TRANSLATIONS.get(ctx.STITCH().getText());
+        String stitchToken = ctx.STITCH().getText();
+        String translated = STITCH_TRANSLATIONS.get(stitchToken);
+
         if (translated == null) {
-            throw new DslSyntaxException("Unsupported stitch token: " + ctx.STITCH().getText());
+            throw new DslSyntaxException("Unsupported stitch token: " + stitchToken);
         }
 
-        StringBuilder result = new StringBuilder(translated);
+        StringBuilder result = new StringBuilder();
 
-        if (ctx.NUMBER() != null) {
-            result.append(" ").append(ctx.NUMBER().getText());
+        TerminalNode numberNode = ctx.NUMBER();
+
+        if (numberNode != null) {
+            String number = numberNode.getText();
+
+            if (ctx.getChild(0).getText().equals(number)) {
+                // NUMBER STITCH
+                result.append(number).append(" ").append(translated);
+            } else {
+                // STITCH NUMBER
+                result.append(translated).append(" ").append(number);
+            }
+        } else {
+            result.append(translated);
         }
 
         if (ctx.contextOperation() != null) {

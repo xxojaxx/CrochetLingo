@@ -1,4 +1,4 @@
-// Generated from C:/Users/kszys/Desktop/PWr/INFORMATYKA TECHNICZNA/MIASI/CrochetLingo/backend/src/main/antlr4/com/example/crochetLingo/antlr/Crochet.g4 by ANTLR 4.13.2
+// Generated from C:/Users/jk123/Desktop/pliki_studia/CrochetLingo/backend/src/main/antlr4/com/example/crochetLingo/antlr/Crochet.g4 by ANTLR 4.13.2
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -16,8 +16,9 @@ public class CrochetParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, 
-		T__9=10, T__10=11, T__11=12, T__12=13, STITCH=14, NUMBER=15, WS=16;
+		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, STITCH=9, 
+		FO=10, MR=11, IN_NEXT_STITCH=12, IN_SAME_STITCH=13, SKIP_STICHES=14, TURN=15, 
+		NUMBER=16, WS=17;
 	public static final int
 		RULE_pattern = 0, RULE_round = 1, RULE_elementList = 2, RULE_element = 3, 
 		RULE_stitch = 4, RULE_action = 5, RULE_repeat = 6, RULE_contextOperation = 7;
@@ -31,15 +32,16 @@ public class CrochetParser extends Parser {
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
-			null, "'rnd'", "':'", "';'", "','", "'mr'", "'fo'", "'('", "')'", "'x'", 
-			"'in_next_st'", "'in_same_st'", "'skip'", "'turn'"
+			null, "'rnd'", "'-'", "':'", "';'", "','", "'('", "')'", "'x'", null, 
+			"'fo'", "'mr'", "'in_next_st'", "'in_same_st'", "'skip'", "'turn'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, null, null, null, null, null, null, null, null, null, null, null, 
-			null, null, "STITCH", "NUMBER", "WS"
+			null, null, null, null, null, null, null, null, null, "STITCH", "FO", 
+			"MR", "IN_NEXT_STITCH", "IN_SAME_STITCH", "SKIP_STICHES", "TURN", "NUMBER", 
+			"WS"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -95,7 +97,6 @@ public class CrochetParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class PatternContext extends ParserRuleContext {
-		public TerminalNode EOF() { return getToken(CrochetParser.EOF, 0); }
 		public List<RoundContext> round() {
 			return getRuleContexts(RoundContext.class);
 		}
@@ -142,8 +143,6 @@ public class CrochetParser extends Parser {
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( _la==T__0 );
-			setState(21);
-			match(EOF);
 			}
 		}
 		catch (RecognitionException re) {
@@ -159,7 +158,10 @@ public class CrochetParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class RoundContext extends ParserRuleContext {
-		public TerminalNode NUMBER() { return getToken(CrochetParser.NUMBER, 0); }
+		public List<TerminalNode> NUMBER() { return getTokens(CrochetParser.NUMBER); }
+		public TerminalNode NUMBER(int i) {
+			return getToken(CrochetParser.NUMBER, i);
+		}
 		public ElementListContext elementList() {
 			return getRuleContext(ElementListContext.class,0);
 		}
@@ -185,19 +187,32 @@ public class CrochetParser extends Parser {
 	public final RoundContext round() throws RecognitionException {
 		RoundContext _localctx = new RoundContext(_ctx, getState());
 		enterRule(_localctx, 2, RULE_round);
+		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(23);
+			setState(21);
 			match(T__0);
-			setState(24);
+			setState(22);
 			match(NUMBER);
 			setState(25);
-			match(T__1);
-			setState(26);
-			elementList();
+			_errHandler.sync(this);
+			_la = _input.LA(1);
+			if (_la==T__1) {
+				{
+				setState(23);
+				match(T__1);
+				setState(24);
+				match(NUMBER);
+				}
+			}
+
 			setState(27);
 			match(T__2);
+			setState(28);
+			elementList();
+			setState(29);
+			match(T__3);
 			}
 		}
 		catch (RecognitionException re) {
@@ -245,21 +260,21 @@ public class CrochetParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(29);
+			setState(31);
 			element();
-			setState(34);
+			setState(36);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (_la==T__3) {
+			while (_la==T__4) {
 				{
 				{
-				setState(30);
-				match(T__3);
-				setState(31);
+				setState(32);
+				match(T__4);
+				setState(33);
 				element();
 				}
 				}
-				setState(36);
+				setState(38);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -313,38 +328,39 @@ public class CrochetParser extends Parser {
 		ElementContext _localctx = new ElementContext(_ctx, getState());
 		enterRule(_localctx, 6, RULE_element);
 		try {
-			setState(41);
+			setState(43);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case STITCH:
+			case NUMBER:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(37);
+				setState(39);
 				stitch();
 				}
 				break;
-			case T__4:
-			case T__5:
+			case FO:
+			case MR:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(38);
+				setState(40);
 				action();
 				}
 				break;
-			case T__6:
+			case T__5:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(39);
+				setState(41);
 				repeat();
 				}
 				break;
-			case T__9:
-			case T__10:
-			case T__11:
-			case T__12:
+			case IN_NEXT_STITCH:
+			case IN_SAME_STITCH:
+			case SKIP_STICHES:
+			case TURN:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(40);
+				setState(42);
 				contextOperation();
 				}
 				break;
@@ -365,8 +381,11 @@ public class CrochetParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class StitchContext extends ParserRuleContext {
-		public TerminalNode STITCH() { return getToken(CrochetParser.STITCH, 0); }
 		public TerminalNode NUMBER() { return getToken(CrochetParser.NUMBER, 0); }
+		public TerminalNode STITCH() { return getToken(CrochetParser.STITCH, 0); }
+		public ContextOperationContext contextOperation() {
+			return getRuleContext(ContextOperationContext.class,0);
+		}
 		public StitchContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -391,20 +410,64 @@ public class CrochetParser extends Parser {
 		enterRule(_localctx, 8, RULE_stitch);
 		int _la;
 		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(43);
-			match(STITCH);
-			setState(45);
+			setState(59);
 			_errHandler.sync(this);
-			_la = _input.LA(1);
-			if (_la==NUMBER) {
+			switch ( getInterpreter().adaptivePredict(_input,7,_ctx) ) {
+			case 1:
+				enterOuterAlt(_localctx, 1);
 				{
-				setState(44);
+				setState(45);
 				match(NUMBER);
+				setState(46);
+				match(STITCH);
+				setState(48);
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & 61440L) != 0)) {
+					{
+					setState(47);
+					contextOperation();
+					}
 				}
-			}
 
+				}
+				break;
+			case 2:
+				enterOuterAlt(_localctx, 2);
+				{
+				setState(50);
+				match(STITCH);
+				setState(51);
+				match(NUMBER);
+				setState(53);
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & 61440L) != 0)) {
+					{
+					setState(52);
+					contextOperation();
+					}
+				}
+
+				}
+				break;
+			case 3:
+				enterOuterAlt(_localctx, 3);
+				{
+				setState(55);
+				match(STITCH);
+				setState(57);
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & 61440L) != 0)) {
+					{
+					setState(56);
+					contextOperation();
+					}
+				}
+
+				}
+				break;
 			}
 		}
 		catch (RecognitionException re) {
@@ -420,6 +483,8 @@ public class CrochetParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class ActionContext extends ParserRuleContext {
+		public TerminalNode FO() { return getToken(CrochetParser.FO, 0); }
+		public TerminalNode MR() { return getToken(CrochetParser.MR, 0); }
 		public ActionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -446,9 +511,9 @@ public class CrochetParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(47);
+			setState(61);
 			_la = _input.LA(1);
-			if ( !(_la==T__4 || _la==T__5) ) {
+			if ( !(_la==FO || _la==MR) ) {
 			_errHandler.recoverInline(this);
 			}
 			else {
@@ -500,15 +565,15 @@ public class CrochetParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(49);
-			match(T__6);
-			setState(50);
+			setState(63);
+			match(T__5);
+			setState(64);
 			elementList();
-			setState(51);
+			setState(65);
+			match(T__6);
+			setState(66);
 			match(T__7);
-			setState(52);
-			match(T__8);
-			setState(53);
+			setState(67);
 			match(NUMBER);
 			}
 		}
@@ -525,7 +590,11 @@ public class CrochetParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class ContextOperationContext extends ParserRuleContext {
+		public TerminalNode IN_NEXT_STITCH() { return getToken(CrochetParser.IN_NEXT_STITCH, 0); }
+		public TerminalNode IN_SAME_STITCH() { return getToken(CrochetParser.IN_SAME_STITCH, 0); }
+		public TerminalNode SKIP_STICHES() { return getToken(CrochetParser.SKIP_STICHES, 0); }
 		public TerminalNode NUMBER() { return getToken(CrochetParser.NUMBER, 0); }
+		public TerminalNode TURN() { return getToken(CrochetParser.TURN, 0); }
 		public ContextOperationContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -550,45 +619,45 @@ public class CrochetParser extends Parser {
 		enterRule(_localctx, 14, RULE_contextOperation);
 		int _la;
 		try {
-			setState(62);
+			setState(76);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
-			case T__9:
+			case IN_NEXT_STITCH:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(55);
-				match(T__9);
+				setState(69);
+				match(IN_NEXT_STITCH);
 				}
 				break;
-			case T__10:
+			case IN_SAME_STITCH:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(56);
-				match(T__10);
+				setState(70);
+				match(IN_SAME_STITCH);
 				}
 				break;
-			case T__11:
+			case SKIP_STICHES:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(57);
-				match(T__11);
-				setState(59);
+				setState(71);
+				match(SKIP_STICHES);
+				setState(73);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				if (_la==NUMBER) {
 					{
-					setState(58);
+					setState(72);
 					match(NUMBER);
 					}
 				}
 
 				}
 				break;
-			case T__12:
+			case TURN:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(61);
-				match(T__12);
+				setState(75);
+				match(TURN);
 				}
 				break;
 			default:
@@ -607,45 +676,55 @@ public class CrochetParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\u0004\u0001\u0010A\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001\u0002"+
+		"\u0004\u0001\u0011O\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001\u0002"+
 		"\u0002\u0007\u0002\u0002\u0003\u0007\u0003\u0002\u0004\u0007\u0004\u0002"+
 		"\u0005\u0007\u0005\u0002\u0006\u0007\u0006\u0002\u0007\u0007\u0007\u0001"+
-		"\u0000\u0004\u0000\u0012\b\u0000\u000b\u0000\f\u0000\u0013\u0001\u0000"+
-		"\u0001\u0000\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001"+
-		"\u0001\u0001\u0001\u0002\u0001\u0002\u0001\u0002\u0005\u0002!\b\u0002"+
-		"\n\u0002\f\u0002$\t\u0002\u0001\u0003\u0001\u0003\u0001\u0003\u0001\u0003"+
-		"\u0003\u0003*\b\u0003\u0001\u0004\u0001\u0004\u0003\u0004.\b\u0004\u0001"+
-		"\u0005\u0001\u0005\u0001\u0006\u0001\u0006\u0001\u0006\u0001\u0006\u0001"+
-		"\u0006\u0001\u0006\u0001\u0007\u0001\u0007\u0001\u0007\u0001\u0007\u0003"+
-		"\u0007<\b\u0007\u0001\u0007\u0003\u0007?\b\u0007\u0001\u0007\u0000\u0000"+
-		"\b\u0000\u0002\u0004\u0006\b\n\f\u000e\u0000\u0001\u0001\u0000\u0005\u0006"+
-		"B\u0000\u0011\u0001\u0000\u0000\u0000\u0002\u0017\u0001\u0000\u0000\u0000"+
-		"\u0004\u001d\u0001\u0000\u0000\u0000\u0006)\u0001\u0000\u0000\u0000\b"+
-		"+\u0001\u0000\u0000\u0000\n/\u0001\u0000\u0000\u0000\f1\u0001\u0000\u0000"+
-		"\u0000\u000e>\u0001\u0000\u0000\u0000\u0010\u0012\u0003\u0002\u0001\u0000"+
-		"\u0011\u0010\u0001\u0000\u0000\u0000\u0012\u0013\u0001\u0000\u0000\u0000"+
-		"\u0013\u0011\u0001\u0000\u0000\u0000\u0013\u0014\u0001\u0000\u0000\u0000"+
-		"\u0014\u0015\u0001\u0000\u0000\u0000\u0015\u0016\u0005\u0000\u0000\u0001"+
-		"\u0016\u0001\u0001\u0000\u0000\u0000\u0017\u0018\u0005\u0001\u0000\u0000"+
-		"\u0018\u0019\u0005\u000f\u0000\u0000\u0019\u001a\u0005\u0002\u0000\u0000"+
-		"\u001a\u001b\u0003\u0004\u0002\u0000\u001b\u001c\u0005\u0003\u0000\u0000"+
-		"\u001c\u0003\u0001\u0000\u0000\u0000\u001d\"\u0003\u0006\u0003\u0000\u001e"+
-		"\u001f\u0005\u0004\u0000\u0000\u001f!\u0003\u0006\u0003\u0000 \u001e\u0001"+
-		"\u0000\u0000\u0000!$\u0001\u0000\u0000\u0000\" \u0001\u0000\u0000\u0000"+
-		"\"#\u0001\u0000\u0000\u0000#\u0005\u0001\u0000\u0000\u0000$\"\u0001\u0000"+
-		"\u0000\u0000%*\u0003\b\u0004\u0000&*\u0003\n\u0005\u0000\'*\u0003\f\u0006"+
-		"\u0000(*\u0003\u000e\u0007\u0000)%\u0001\u0000\u0000\u0000)&\u0001\u0000"+
-		"\u0000\u0000)\'\u0001\u0000\u0000\u0000)(\u0001\u0000\u0000\u0000*\u0007"+
-		"\u0001\u0000\u0000\u0000+-\u0005\u000e\u0000\u0000,.\u0005\u000f\u0000"+
-		"\u0000-,\u0001\u0000\u0000\u0000-.\u0001\u0000\u0000\u0000.\t\u0001\u0000"+
-		"\u0000\u0000/0\u0007\u0000\u0000\u00000\u000b\u0001\u0000\u0000\u0000"+
-		"12\u0005\u0007\u0000\u000023\u0003\u0004\u0002\u000034\u0005\b\u0000\u0000"+
-		"45\u0005\t\u0000\u000056\u0005\u000f\u0000\u00006\r\u0001\u0000\u0000"+
-		"\u00007?\u0005\n\u0000\u00008?\u0005\u000b\u0000\u00009;\u0005\f\u0000"+
-		"\u0000:<\u0005\u000f\u0000\u0000;:\u0001\u0000\u0000\u0000;<\u0001\u0000"+
-		"\u0000\u0000<?\u0001\u0000\u0000\u0000=?\u0005\r\u0000\u0000>7\u0001\u0000"+
-		"\u0000\u0000>8\u0001\u0000\u0000\u0000>9\u0001\u0000\u0000\u0000>=\u0001"+
-		"\u0000\u0000\u0000?\u000f\u0001\u0000\u0000\u0000\u0006\u0013\")-;>";
+		"\u0000\u0004\u0000\u0012\b\u0000\u000b\u0000\f\u0000\u0013\u0001\u0001"+
+		"\u0001\u0001\u0001\u0001\u0001\u0001\u0003\u0001\u001a\b\u0001\u0001\u0001"+
+		"\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0002\u0001\u0002\u0001\u0002"+
+		"\u0005\u0002#\b\u0002\n\u0002\f\u0002&\t\u0002\u0001\u0003\u0001\u0003"+
+		"\u0001\u0003\u0001\u0003\u0003\u0003,\b\u0003\u0001\u0004\u0001\u0004"+
+		"\u0001\u0004\u0003\u00041\b\u0004\u0001\u0004\u0001\u0004\u0001\u0004"+
+		"\u0003\u00046\b\u0004\u0001\u0004\u0001\u0004\u0003\u0004:\b\u0004\u0003"+
+		"\u0004<\b\u0004\u0001\u0005\u0001\u0005\u0001\u0006\u0001\u0006\u0001"+
+		"\u0006\u0001\u0006\u0001\u0006\u0001\u0006\u0001\u0007\u0001\u0007\u0001"+
+		"\u0007\u0001\u0007\u0003\u0007J\b\u0007\u0001\u0007\u0003\u0007M\b\u0007"+
+		"\u0001\u0007\u0000\u0000\b\u0000\u0002\u0004\u0006\b\n\f\u000e\u0000\u0001"+
+		"\u0001\u0000\n\u000bU\u0000\u0011\u0001\u0000\u0000\u0000\u0002\u0015"+
+		"\u0001\u0000\u0000\u0000\u0004\u001f\u0001\u0000\u0000\u0000\u0006+\u0001"+
+		"\u0000\u0000\u0000\b;\u0001\u0000\u0000\u0000\n=\u0001\u0000\u0000\u0000"+
+		"\f?\u0001\u0000\u0000\u0000\u000eL\u0001\u0000\u0000\u0000\u0010\u0012"+
+		"\u0003\u0002\u0001\u0000\u0011\u0010\u0001\u0000\u0000\u0000\u0012\u0013"+
+		"\u0001\u0000\u0000\u0000\u0013\u0011\u0001\u0000\u0000\u0000\u0013\u0014"+
+		"\u0001\u0000\u0000\u0000\u0014\u0001\u0001\u0000\u0000\u0000\u0015\u0016"+
+		"\u0005\u0001\u0000\u0000\u0016\u0019\u0005\u0010\u0000\u0000\u0017\u0018"+
+		"\u0005\u0002\u0000\u0000\u0018\u001a\u0005\u0010\u0000\u0000\u0019\u0017"+
+		"\u0001\u0000\u0000\u0000\u0019\u001a\u0001\u0000\u0000\u0000\u001a\u001b"+
+		"\u0001\u0000\u0000\u0000\u001b\u001c\u0005\u0003\u0000\u0000\u001c\u001d"+
+		"\u0003\u0004\u0002\u0000\u001d\u001e\u0005\u0004\u0000\u0000\u001e\u0003"+
+		"\u0001\u0000\u0000\u0000\u001f$\u0003\u0006\u0003\u0000 !\u0005\u0005"+
+		"\u0000\u0000!#\u0003\u0006\u0003\u0000\" \u0001\u0000\u0000\u0000#&\u0001"+
+		"\u0000\u0000\u0000$\"\u0001\u0000\u0000\u0000$%\u0001\u0000\u0000\u0000"+
+		"%\u0005\u0001\u0000\u0000\u0000&$\u0001\u0000\u0000\u0000\',\u0003\b\u0004"+
+		"\u0000(,\u0003\n\u0005\u0000),\u0003\f\u0006\u0000*,\u0003\u000e\u0007"+
+		"\u0000+\'\u0001\u0000\u0000\u0000+(\u0001\u0000\u0000\u0000+)\u0001\u0000"+
+		"\u0000\u0000+*\u0001\u0000\u0000\u0000,\u0007\u0001\u0000\u0000\u0000"+
+		"-.\u0005\u0010\u0000\u0000.0\u0005\t\u0000\u0000/1\u0003\u000e\u0007\u0000"+
+		"0/\u0001\u0000\u0000\u000001\u0001\u0000\u0000\u00001<\u0001\u0000\u0000"+
+		"\u000023\u0005\t\u0000\u000035\u0005\u0010\u0000\u000046\u0003\u000e\u0007"+
+		"\u000054\u0001\u0000\u0000\u000056\u0001\u0000\u0000\u00006<\u0001\u0000"+
+		"\u0000\u000079\u0005\t\u0000\u00008:\u0003\u000e\u0007\u000098\u0001\u0000"+
+		"\u0000\u00009:\u0001\u0000\u0000\u0000:<\u0001\u0000\u0000\u0000;-\u0001"+
+		"\u0000\u0000\u0000;2\u0001\u0000\u0000\u0000;7\u0001\u0000\u0000\u0000"+
+		"<\t\u0001\u0000\u0000\u0000=>\u0007\u0000\u0000\u0000>\u000b\u0001\u0000"+
+		"\u0000\u0000?@\u0005\u0006\u0000\u0000@A\u0003\u0004\u0002\u0000AB\u0005"+
+		"\u0007\u0000\u0000BC\u0005\b\u0000\u0000CD\u0005\u0010\u0000\u0000D\r"+
+		"\u0001\u0000\u0000\u0000EM\u0005\f\u0000\u0000FM\u0005\r\u0000\u0000G"+
+		"I\u0005\u000e\u0000\u0000HJ\u0005\u0010\u0000\u0000IH\u0001\u0000\u0000"+
+		"\u0000IJ\u0001\u0000\u0000\u0000JM\u0001\u0000\u0000\u0000KM\u0005\u000f"+
+		"\u0000\u0000LE\u0001\u0000\u0000\u0000LF\u0001\u0000\u0000\u0000LG\u0001"+
+		"\u0000\u0000\u0000LK\u0001\u0000\u0000\u0000M\u000f\u0001\u0000\u0000"+
+		"\u0000\n\u0013\u0019$+059;IL";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {
