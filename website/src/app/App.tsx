@@ -61,7 +61,7 @@ export default function App() {
     const { line, expected, offendingToken } = error;
     if (expected?.includes("';'")) return `Linia ${line}: Brakuje średnika ";" na końcu rundy.`;
     if (expected?.includes("','")) return `Linia ${line}: Brakuje przecinka między elementami (np. "mr, sc 8").`;
-    if (/^\d+$/.test(offendingToken)) return `Linia ${line}: Liczba w złym miejscu. Użyj np. "sc 8", nie "8 sc".`;
+    if (/^\d+$/.test(offendingToken)) return `Linia ${line}: Nie mogą być dwie liczby do jednego ściegu. Użyj np. "sc 8", nie "8 sc 8".`;
     if (offendingToken && !expected?.length) return `Linia ${line}: Nieznany element "${offendingToken}".`;
     return `Nieznany błąd. Sprawdź, czy wzór wpisany zgodnie ze schematem.`;
   }
