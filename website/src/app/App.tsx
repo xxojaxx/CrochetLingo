@@ -34,7 +34,7 @@ export default function App() {
 
   const handleMouseLeave = () => setTooltip(prev => ({ ...prev, active: false }));
   const abbreviations = [
-    { en: 'rnd',        pl: 'okr',           full: 'okrąg',                     img: '/images/stitches/rnd.jpg' },
+    { en: 'rnd',        pl: 'okr',           full: 'okrąg',                     img: null },
     { en: 'sc',         pl: 'ps',            full: 'półsłupek',                 img: '/images/stitches/sc.jpg' },
     { en: 'hdc',        pl: 'psn',           full: 'półsłupek nawijany',        img: '/images/stitches/hdc.jpg' },
     { en: 'dc',         pl: 's',             full: 'słupek',                    img: '/images/stitches/dc.jpg' },

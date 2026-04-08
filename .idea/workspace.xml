@@ -4,13 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e4b1950-aa76-44f7-b6fe-05392743675a" name="Changes" comment="new exceptions and features on frontend">
+    <list default="true" id="3e4b1950-aa76-44f7-b6fe-05392743675a" name="Changes" comment="new photos of stitches">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/public/images/stitches/ch.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/website/public/images/stitches/ch.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/public/images/stitches/dc.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/website/public/images/stitches/dc.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/public/images/stitches/hdc.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/website/public/images/stitches/hdc.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/public/images/stitches/sc.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/website/public/images/stitches/sc.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/public/images/stitches/slst.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/website/public/images/stitches/slst.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/crochetLingo/antlr/CrochetToPolishVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/crochetLingo/antlr/CrochetToPolishVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/crochetLingo/controller/TranslateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/crochetLingo/controller/TranslateController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/crochetLingo/model/PatternRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/crochetLingo/model/PatternRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/crochetLingo/service/TranslatorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/crochetLingo/service/TranslatorService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/test/java/com/example/crochetLingo/service/TranslatorServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/test/java/com/example/crochetLingo/service/TranslatorServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/src/app/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/app/App.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -98,7 +98,7 @@
       <workItem from="1774428298576" duration="2370000" />
       <workItem from="1774788436495" duration="1000000" />
       <workItem from="1774801697598" duration="1649000" />
-      <workItem from="1775633832147" duration="2083000" />
+      <workItem from="1775633832147" duration="4868000" />
     </task>
     <task id="LOCAL-00001" summary="ANTLR library added">
       <option name="closed" value="true" />
@@ -116,7 +116,23 @@
       <option name="project" value="LOCAL" />
       <updated>1774801173610</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="new photos of stitches">
+      <option name="closed" value="true" />
+      <created>1775636075811</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1775636075811</updated>
+    </task>
+    <task id="LOCAL-00004" summary="new photos of stitches">
+      <option name="closed" value="true" />
+      <created>1775636081836</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1775636081836</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -136,7 +152,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="ANTLR library added" />
     <MESSAGE value="new exceptions and features on frontend" />
-    <option name="LAST_COMMIT_MESSAGE" value="new exceptions and features on frontend" />
+    <MESSAGE value="new photos of stitches" />
+    <option name="LAST_COMMIT_MESSAGE" value="new photos of stitches" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
