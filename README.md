@@ -1,6 +1,6 @@
 # CrochetLingo
 
-CrochetLingo tlumaczy wzory szydelkowe z angielskiego DSL na polski DSL. Backend waliduje wejscie parserem ANTLR i wykonuje translacje przez AST/visitor, bez prostego `replace`.
+CrochetLingo tlumaczy wzory szydelkowe z angielskiego DSL na polski DSL. Backend waliduje wejscie parserem ANTLR i wykonuje translacje przez visitor.
 
 ## DSL v1
 
@@ -72,26 +72,7 @@ okr 5: (s 1, w to samo ocz, zm) x 3, zr;
 
 ## Walidacja
 
-Parser ANTLR waliduje skladnie przed translacja. Niepoprawny request albo niepoprawny `DSL v1` zwracaja `400` z backendu.
-
-## Czego DSL v1 nie obsluguje
-
-Ponizsze formy sa celowo odrzucane:
-
-- `8 inc`
-- `mr 8 sc`
-- koncowe liczniki typu `(24)`
-
-## Testy i fixture'y
-
-Test translacji znajduje sie w `backend/src/test/java/com/example/crochetLingo/service/TranslatorServiceTest.java`.
-
-Fixture'y expected vs actual znajduja sie w:
-
-- `backend/src/test/resources/fixtures/basic.en.dsl`
-- `backend/src/test/resources/fixtures/basic.pl.dsl`
-- `backend/src/test/resources/fixtures/context.en.dsl`
-- `backend/src/test/resources/fixtures/context.pl.dsl`
+Parser ANTLR waliduje skladnie przed translacja. Niepoprawny request albo niepoprawny `DSL` zwracaja `400` z backendu.
 
 ## Uruchamianie
 
@@ -103,16 +84,6 @@ W katalogu `backend`:
 $env:JAVA_HOME='C:\Program Files\Eclipse Adoptium\jdk-21.0.8.9-hotspot'
 $env:Path="$env:JAVA_HOME\bin;$env:Path"
 ./mvnw spring-boot:run
-```
-
-### Testy
-
-W katalogu `backend`:
-
-```powershell
-$env:JAVA_HOME='C:\Program Files\Eclipse Adoptium\jdk-21.0.8.9-hotspot'
-$env:Path="$env:JAVA_HOME\bin;$env:Path"
-./mvnw test
 ```
 
 ### Frontend
